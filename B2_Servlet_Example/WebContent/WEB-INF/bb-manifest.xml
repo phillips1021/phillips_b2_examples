@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <plugin>
+      <name value="B2 Example Using Servlets"/>
+      <description value="B2 example that use Java Servlets"/>
+      <handle value="b2_servlet_example"/>
+	  <version value="1.0.0"/>
+	  <requires>
+ 	    <bbversion value="9.1"/>
+	  </requires>
+	  <vendor>
+	    <id value="kuit"/>
+	    <name value="KU IT"/>
+	    <url value="http://technology.ku.edu"/>
+	    <description value="Information Technology Department, University of Kansas"/>
+	  </vendor>
+	  <http-actions>
+		<config value=""/>
+		<remove value=""/>
+	  </http-actions>
+	  <application-defs>
+	    <application 
+	      handle="b2_servlet_example" 
+  	      type="course_tool"
+	      name="B2 Example Using Servlets" is-course-tool="false">
+	    <description lang="en_US">Building Block example that uses Servlets  		</description>
+	    <links>
+	      <link>
+	        <type value="course_tool"/>
+	        <name value="B2 Example Using Servlets"/>
+	        <url value="index.jsp"/>
+	        <description value="Building Block example that uses Servlets  "/>
+          </link>
+	    </links>
+	  </application>
+	</application-defs>
+	<!-- the folder under WEB-INF/schema folder where schema.xml file is located. That file 
+			defines a database table used by this application -->
+		<schema-dirs>
+			<schema-dir dir-name="favoritecourse" />
+		</schema-dirs>
+		
+	<permissions>
+	  <permission type="attribute" name="user.personalinfo" actions="get" />
+		<permission type="attribute" name="user.authinfo" actions="get" />
+	  <permission type="attribute" name="Group" actions="get"/>
+	  <permission type="attribute" name="GroupMembership" actions="get"/>
+	</permissions>
+  </plugin>
+</manifest>

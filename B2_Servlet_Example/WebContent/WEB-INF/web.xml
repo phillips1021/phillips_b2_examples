@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>B2_Servlet_Example</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Get information about the logged in user</description>
+    <display-name>UserInformation</display-name>
+    <servlet-name>UserInformation</servlet-name>
+    <servlet-class>edu.ku.it.b2servletexample.servlet.UserInformation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserInformation</servlet-name>
+    <url-pattern>/UserInformation</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Gets logged in user's favorite blackboard course.</description>
+    <display-name>FavoriteCourse</display-name>
+    <servlet-name>FavoriteCourse</servlet-name>
+    <servlet-class>edu.ku.it.b2servletexample.servlet.FavoriteCourse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FavoriteCourse</servlet-name>
+    <url-pattern>/FavoriteCourse</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description>Get logged in user's courses</description>
+    <display-name>SelectFavoriteCourseInput</display-name>
+    <servlet-name>SelectFavoriteCourseInput</servlet-name>
+    <servlet-class>edu.ku.it.b2servletexample.servlet.SelectFavoriteCourseInput</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectFavoriteCourseInput</servlet-name>
+    <url-pattern>/SelectFavoriteCourseInput</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description>Save user course favorite</description>
+    <display-name>SelectFavoriteCourseAction</display-name>
+    <servlet-name>SelectFavoriteCourseAction</servlet-name>
+    <servlet-class>edu.ku.it.b2servletexample.servlet.SelectFavoriteCourseAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectFavoriteCourseAction</servlet-name>
+    <url-pattern>/SelectFavoriteCourseAction</url-pattern>
+  </servlet-mapping>
+</web-app>

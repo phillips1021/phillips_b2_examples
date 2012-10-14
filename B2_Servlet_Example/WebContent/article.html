@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>A Tutorial On Using Blackboard's Building Block Feature That Creates Database Tables In the Blackboard Schema</h3>
+
+<h3>Introduction</h3>
+<p>Beginning with Blackboard Learn 9.1 Service Pack 1, Blackboard enabled a Building Block (B2) to create database 
+tables in the Blackboard Learn schema and insert records into those tables when the Building Block is 
+deployed to the Blackboard Learn application server (ref. 1).  This makes it simpler for B2 applications that need to 
+store data in database tables, especially if those tables should contain foreign keys to other Blackboard tables.
+</p>
+
+<p>The documentation available on how to setup a Building Block so it creates the tables and inserts records into
+the tables is very limited (at least what I could find) and confusing.  After I learned how to do this I thought
+a tutorial and example on how to have a B2 create tables and insert records that are part of the Blackboard
+Learn database schema would be useful for other B2 developers.</p>
+
+<p>I would not have gotten even close to figuring out how to have a B2 application create tables and insert records
+without the assistance of two very smart Blackboard building block developers:  <b>Brian Bealer and Malcolm Murray</b>.
+Malcom has a version of his Signup building block that uses the new feature of having the B2 create
+the database tables it needs as part of the Blackboard Learn database schema (ref. 2).  Studying his source code gave me 
+the insights into how to structure the schema.xml file Blackboard requires for this technique.  Brian provided me 
+great assistance in figuring out how to configure the files Blackboard requires so that it will insert the 
+initial records into the tables.  I owe a big thank you to both of them.</p>
+
+<h3>Example Building Block Application</h3>
+<p>You can <a href="http://www.brucephillips.name/blackboard/B2_Servlet_Example.zip">download 
+the example application: B2_Servlet_Example.zip</a>. It is an archived Eclipse project, so if you are using
+Eclipse you should be able to import it directly into your Eclipse workspace.  If you are not using Eclipse, unzip
+the downloaded file and you can view the source code in any text editor. Be sure to read the README.txt for 
+additional information on the libraries the Eclipse project must have on its classpath in order to compile.</p>
+
+<h3>How To Create The Database Table and Insert Records When Building Block Is Deployed</h3>
+
+<p>The example B2 application creates a table named kuit_userfavoritecourse and inserts one record into that table when the
+Building Block is deployed to Blackboard. There are several steps you must follow to configure the Building Block so 
+that when it is deployed to the Blackboard application server Blackboard will create the tables in the Blackboard
+database and insert the records. </p>
+
+<p><b>Step 1:  Add schema node to bb-manifest.xml</b> - In your B2's bb-manifest.xml add this XML node.</p>
+
+<code>
+
+		<schema-dirs>
+			<schema-dir dir-name="favoritecourse" />
+		</schema-dirs>
+
+</code>
+
+<p>The value of dir-name is the folder name where Blackboard will look for the schema.xml file.  The schema.xml file is where you
+define the schema for the tables you want Blackboard to create (ref. 3).  What confused me for several hours is that the dir-name
+value must be a folder that is under another folder named schema.  So if you examine the source code you will see
+WEB-INF/schema/favoritecourse/schema.xml.</p>
+
+<p><b>Step 2: Create schema.xml</b> - Create the schema.xml file and place it under the folder with the name that matches the dir-name 
+attribute's value (which is under WEB-INF/schema).  Reference 3 below has some guidance on how to write the
+schema.xml.  If you examine the schema.xml file in the example application, you'll see it creates just one table
+name kuit_userfavoritecourse.  NOTE that the table name must start with the vendor ID value that you put in 
+the bb-manifest.xml file.  Also note that the table defines a primary key named pk1.  I learned after much trial and error
+and help from Brian Bealer that if I want Blackboard to insert some records when the Building Block is deployed my table
+must have a column named pk1 and it must be the primary key.</p>
+
+<p>When Blackboard created the table kuit_userfavoritecourse it also automatically created an Oracle sequence named
+kuit_userfavoritecourse_seq.  It used that sequence to set the value for the pk1 column when inserting the start record.
+Before adding the pk1 column I kept getting errors that referenced a missing "pk1" column when Blackboard tried to
+insert the start record.  If I did not want to insert the start record I would not have needed the pk1 column and 
+could have used a different column as the table's primary key.</p>
+
+<p><b>Step 3: Create A Tab Delimited Text File Containing Values For Initial Records</b> - Create a folder named "datatemplates" 
+under the folder that matches the dir-name value from the schema-dir node.  In the "datatemplates" folder 
+create a txt file with a name that matches the table you want Blackboard to insert the records in.  So in the example
+application there is a file kuit_userfavoritecourse.txt.  In that file using the tab as the delimiter are two lines.
+The first line are the column names and the second line are values for those columns that Blackboard should use 
+for the initial record.</p>
+
+<p>As part of step 3 you also need to create a file named main_templates.lst (that is the lower case L).  In the example 
+application that file just contains the table name:column name, where column name is the column that must be 
+unique for each record.  The purpose and 
+structure of that file 
+are detailed on your blackboard application server in blackboard/system/database/vi/as_core/datatemplates.
+In that folder is a main_templates.lst file that describes the purpose of that file and 
+how it should be structured. (Which after reading that file several times I just got more confused.)</p>
+
+<p><b>Step 4: Have A Blackboard Administrator Allow Building Blocks To Create Tables</b> - By default Blackboard 
+does not allow a Building Block to create tables.  A Blackboard administrator must "turn-on" this feature.  
+This change must be made BEFORE uploading the .war file to Blackboard.  
+Click on the System Admin tab - Building Blocks - Installed Tools - Global Settings (this is for
+Bb Learn 9.1 SP 9) to make the change.</p>
+
+<p><b>Step 5:  Build and Deploy The .war File</b>  For the example application you can use Eclipse to create the
+.war file (File - Export - Web - War File).  Then upload the .war file to your Blackboard application server.  
+Then check this log:  bb-schema-log.txt on your Blackboard application server (blackboard/logs).  
+You should see something similar to the following.</p>
+
+<code>
+
+2012-10-12 11:06:52 -0500 - DECLARE   v_count NUMBER;    BEGIN       SELECT COUNT(*) INTO v_count FROM user_sequences         WHERE LOWER(sequence_name) = 'kuit_userfavoritecourse_seq';       IF (v_count = 0) THEN          EXECUTE IMMEDIATE 'create sequence kuit_userfavoritecourse_seq';       END IF;    END;
+2012-10-12 11:06:52 -0500 - CREATE TABLE kuit_userfavoritecourse ( pk1 integer  NOT NULL ,username varchar2(100)  NOT NULL ,courseId varchar2(100)  NOT NULL  )
+2012-10-12 11:06:52 -0500 - create unique index kuit_favoritecourse_ui1 on kuit_userfavoritecourse (username) tablespace bb_bb60_INDX
+2012-10-12 11:06:52 -0500 - alter table kuit_userfavoritecourse add  constraint kuit_favoritecourse_pk1 primary key (pk1)
+2012-10-12 11:06:53 -0500 - comment on column kuit_userfavoritecourse.pk1 is 'This is the primary key for the table, in Oracle it should be updated using the sequence kuit_userfavoritecourse_seq which will be created automatically'
+2012-10-12 11:06:53 -0500 - comment on column kuit_userfavoritecourse.username is 'username of logged in user'
+2012-10-12 11:06:53 -0500 - comment on column kuit_userfavoritecourse.courseId is 'course id value from course_main table'
+
+</code>
+
+<p>If you have the above statements in bb-schema-log.txt and Blackboard showed you the message that the Building Block 
+was successfully deployed then you can next make the Building Block available and set the course tool of the Building 
+Block to "Always On".  Then go to a course in Blackboard and under the Course Tools drop down you should see a tool named 
+B2 Example Using Servlet.  Click on that tool to start using the Building Block application.</p>
+
+<h3>Additional Notes</h3>
+<p>When you delete the Building Block, Blackboard does not delete the tables created by the Building Blocks deployment.
+ </p>
+
+<p>Consult reference 3 for how to define in schema.xml foreign keys that reference primary keys in other Blackboard 
+tables such as users or course_main.  Malcolm's Signup List Tool B2 project (ref. 2) has very good examples of 
+creating tables with foreign keys to existing Blackboard tables.</p>
+
+<p>This example Building Block was tested against Blackboard Learn 9.1 Service Pack 9 with an Oracle database.  It should also
+work on any version of Blackboard Learn 9.1 Service Pack 1 or higher and with an SQL Server database.  NOTE:  you will
+need to change the Java code in class CourseFavoritePersister to NOT use the Oracle sequence for setting the value
+of the pk1 column.</p>
+
+
+
+<h3>Summary</h3>
+<p>As you can see from the list of reference below, the documentation on this Building Block feature is limited, 
+incomplete, and confusing.  So I'm hopeful that this article will save other B2 developers much time
+and frustration. If I've gotten something incorrect or you know of more references for this aspect of 
+Building Blocks please post a comment.</p>
+
+<h3>References</h3>
+
+<ol>
+	<li><a href="http://www.edugarage.com/display/BBDN/Creating+Database+Objects+with+Building+Blocks">Blackboard Edugarage 
+	Creating Database Objects with Building Blocks	</a> </li>
+	<li><a href="http://projects.oscelot.org/gf/project/signup/">Signup List Tool</a></li>
+	<li><a href="http://www.edugarage.com/display/BBDN/Schema+Definitions">Blackboard Edugarage Schema Definitions</a></li>
+</ol>
+
+</body>
+</html>

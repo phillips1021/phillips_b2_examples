@@ -1,0 +1,22 @@
+<schema name="kuit_userfavoritecourse">
+<comment>This schema defines a table used by the application to store a Blackboard user's favorite Blackboard course</comment>
+
+  <table name="kuit_userfavoritecourse">
+  	  <column name="pk1" data-type="int" nullable="false" identity="true" comment="This is the primary key for the table, in Oracle it should be updated using the sequence kuit_userfavoritecourse_seq which will be created automatically" />
+    <column name="username" data-type="varchar(100)" nullable="false" identity="false" comment="username of logged in user" />
+    <column name="courseId" data-type="varchar(100)" nullable="false" identity="false" comment="course id value from course_main table" />
+
+    <primary-key name="kuit_favoritecourse_pk1" comment="Unique primary key">
+      <columnref name="pk1" />
+    </primary-key>
+    
+    <index name="kuit_favoritecourse_ui1" unique="true">
+        <columnref name="username"/>
+    </index>
+ 
+  </table>
+
+ 
+
+</schema>
+
