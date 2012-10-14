@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>B2_Servlet_Example_Part_Two</display-name>
+	<servlet>
+		<description>
+		Controller for getting information about the logged in user</description>
+		<display-name>UserInformation</display-name>
+		<servlet-name>UserInformation</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.UserInformation</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Controller for generating an Exception</description>
+		<display-name>ThrowException</display-name>
+		<servlet-name>ThrowException</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.ThrowException</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInformation</servlet-name>
+		<url-pattern>/UserInformation</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ThrowException</servlet-name>
+		<url-pattern>/ThrowException</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+
+		<welcome-file>index.jsp</welcome-file>
+
+	</welcome-file-list>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+</web-app>

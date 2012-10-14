@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <plugin>
+      <name value="B2 Example Using Servlets Part Two"/>
+      <description value="B2 example that use Java Servlets part two"/>
+      <handle value="b2_servlet_part_two"/>
+	  <version value="1.0.0"/>
+	  <requires>
+ 	    <bbversion value="9.1"/>
+	  </requires>
+	  <vendor>
+	    <id value="kuit"/>
+	    <name value="KU IT"/>
+	    <url value="http://technology.ku.edu"/>
+	    <description value="Information Technology Department, University of Kansas"/>
+	  </vendor>
+	  <http-actions>
+		<config value=""/>
+		<remove value=""/>
+	  </http-actions>
+	  <application-defs>
+	    <application 
+	      handle="b2_example_part_two" 
+  	      type="course_tool"
+	      name="B2 Example Using Servlets Part Two" is-course-tool="false">
+	    <description lang="en_US">Building Block example that uses Servlets part two	</description>
+	    <links>
+	      <link>
+	        <type value="course_tool"/>
+	        <name value="B2 Example Part Two"/>
+	        <url value="index.jsp"/>
+	        <description value="Building Block example that uses Servlets  part two"/>
+          </link>
+	    </links>
+	  </application>
+	</application-defs>
+
+		
+	<permissions>
+	  <permission type="attribute" name="user.personalinfo" actions="get" />
+		<permission type="attribute" name="user.authinfo" actions="get" />
+	  <permission type="attribute" name="Group" actions="get"/>
+	  <permission type="attribute" name="GroupMembership" actions="get"/>
+	<permission></permission></permissions>
+  </plugin>
+</manifest>
