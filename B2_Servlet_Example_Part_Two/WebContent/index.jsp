@@ -17,7 +17,9 @@
 	<p>Welcome to Blackboard Building Block Development Part Two</p>
 	
 	<p><a href="UserInformation">Get information</a> about the logged in Blackboard user.</p>
-	
+
+	<p><a href="CourseInformation">Get information</a> about this course.</p>
+
 	<p><a href="ThrowException">Throw exception</a>.</p>
 
 </bbNG:learningSystemPage>

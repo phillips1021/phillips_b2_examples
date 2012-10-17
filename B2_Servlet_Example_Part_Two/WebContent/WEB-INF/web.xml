@@ -9,6 +9,13 @@
 		<servlet-class>edu.ku.it.si.b2example.servlet.UserInformation</servlet-class>
 	</servlet>
 	<servlet>
+		<description>
+		Controller for getting information about the course user is viewing</description>
+		<display-name>CourseInformation</display-name>
+		<servlet-name>CourseInformation</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.CourseInformation</servlet-class>
+	</servlet>
+	<servlet>
 		<description>Controller for generating an Exception</description>
 		<display-name>ThrowException</display-name>
 		<servlet-name>ThrowException</servlet-name>
@@ -19,6 +26,10 @@
 		<url-pattern>/UserInformation</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>CourseInformation</servlet-name>
+		<url-pattern>/CourseInformation</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>ThrowException</servlet-name>
 		<url-pattern>/ThrowException</url-pattern>
 	</servlet-mapping>
@@ -27,8 +38,5 @@
 		<welcome-file>index.jsp</welcome-file>
 
 	</welcome-file-list>
-	<error-page>
-		<exception-type>java.lang.Throwable</exception-type>
-		<location>/error.jsp</location>
-	</error-page>
+
 </web-app>
