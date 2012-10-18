@@ -4,7 +4,17 @@
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
 
 <bbNG:learningSystemPage
-	title="Welcome To Blackboard Building Block Development - Course Information">
+	title="Welcome To Blackboard Building Block Development - Course Information"
+	ctxId="ctx">
+
+	<%
+	//use the Context object to get the Course the user is currently viewing
+	Course course = ctx.getCourse();
+	
+	//Get the course_id value so it can be used as the value for the query string parameter below
+	String course_id = course.getId().toExternalString() ;
+
+	%>
 
 	<bbNG:pageHeader>
 		<bbNG:breadcrumbBar environment="COURSE"
@@ -27,7 +37,7 @@
 	</p>
 
 	<p>
-		<a href="index.jsp">Return home</a>.
+		<a href="index.jsp?course_id=<%=course_id%>">Return home</a>.
 	</p>
 
 </bbNG:learningSystemPage>

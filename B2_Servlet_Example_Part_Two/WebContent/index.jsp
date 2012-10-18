@@ -29,7 +29,7 @@
 
 	<p>Welcome to Blackboard Building Block Development Part Two</p>
 	
-	<p><a href="UserInformation">Get information</a> about the logged in Blackboard user.</p>
+	<p><a href="UserInformation?course_id=<%=course_id%>">Get information</a> about the logged in Blackboard user.</p>
 
     <!-- see above for how course_id is assigned a value -->
 	<p><a href="CourseInformation?course_id=<%=course_id%>">Get information</a> about this course.</p>
