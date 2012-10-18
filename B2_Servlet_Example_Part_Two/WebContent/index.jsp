@@ -18,7 +18,9 @@
 	
 	<p><a href="UserInformation">Get information</a> about the logged in Blackboard user.</p>
 
-	<p><a href="CourseInformation">Get information</a> about this course.</p>
+    <!-- 4129-10161 is a course id value in my Blackboard.  I'm hard coding the course id
+    for now to test. -->
+	<p><a href="CourseInformation?course_id=4129-10161">Get information</a> about this course.</p>
 
 	<p><a href="ThrowException">Throw exception</a>.</p>
 

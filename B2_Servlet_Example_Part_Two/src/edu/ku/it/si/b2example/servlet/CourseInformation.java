@@ -39,6 +39,10 @@ public class CourseInformation extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String course_id = request.getParameter("course_id");
+		
+		LOGGER.info("course_id value is " + course_id);
+		
 		ContextManager contextManager = ContextManagerFactory.getInstance();
 		
 		/*
