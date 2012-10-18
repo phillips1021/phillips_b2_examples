@@ -23,4 +23,4 @@ When you click on this B2 in Blackboard the index.jsp
 will be rendered.
 
 The project demonstrates how to use the Context object to get course and user 
-information and how to use the breadcrumb tag.
+information from within both the JSP and within a Servlet and how to use the breadcrumb tag.
