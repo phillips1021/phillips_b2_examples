@@ -7,19 +7,13 @@
 	title="Welcome To Blackboard Building Block Development - Course Information"
 	ctxId="ctx">
 
-	<%
-	//use the Context object to get the Course the user is currently viewing
-	Course course = ctx.getCourse();
-	
-	//Get the course_id value so it can be used as the value for the query string parameter below
-	String course_id = course.getId().toExternalString() ;
-
-	%>
-
+<!-- note the breadcrumb href value uses the Context object 
+referred to by the variable ctx to get the current course ID 
+value -->
 	<bbNG:pageHeader>
 		<bbNG:breadcrumbBar environment="COURSE"
 			navItem="course_plugin_manage" >
-			<bbNG:breadcrumb title="Home" href="index.jsp" />
+			<bbNG:breadcrumb title="Home" href="index.jsp?course_id=${ctx.courseId.externalString}" />
 			<bbNG:breadcrumb title="Course Information" />
 		</bbNG:breadcrumbBar>
 		<bbNG:pageTitleBar>
@@ -36,8 +30,10 @@
 			
 	</p>
 
-	<p>
-		<a href="index.jsp?course_id=<%=course_id%>">Return home</a>.
+<!-- note the href value uses the Context object 
+referred to by the variable ctx to get the current course ID 
+value -->
+<p><a href="index.jsp?course_id=${ctx.courseId.externalString}">Return home</a>.
 	</p>
 
 </bbNG:learningSystemPage>

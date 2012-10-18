@@ -8,16 +8,8 @@
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
 
 <bbNG:learningSystemPage
-	title="Welcome To Blackboard Building Block Development Part Two - Home Page" ctxId="ctx">
-	
-	<%
-	//use the Context object to get the Course the user is currently viewing
-	Course course = ctx.getCourse();
-	
-	//Get the course_id value so it can be used as the value for the query string parameter below
-	String course_id = course.getId().toExternalString() ;
-
-	%>
+	title="Welcome To Blackboard Building Block Development Part Two - Home Page" 
+	ctxId="ctx">
 
 	<bbNG:pageHeader>
 
@@ -28,11 +20,13 @@
 	</bbNG:pageHeader>
 
 	<p>Welcome to Blackboard Building Block Development Part Two</p>
-	
-	<p><a href="UserInformation?course_id=<%=course_id%>">Get information</a> about the logged in Blackboard user.</p>
 
-    <!-- see above for how course_id is assigned a value -->
-	<p><a href="CourseInformation?course_id=<%=course_id%>">Get information</a> about this course.</p>
+    <!-- note the href value uses the Context object 
+referred to by the variable ctx to get the current course ID 
+value -->	
+	<p><a href="UserInformation?course_id=${ctx.courseId.externalString}">Get information</a> about the logged in Blackboard user.</p>
+
+	<p><a href="CourseInformation?course_id=${ctx.courseId.externalString}">Get information</a> about this course.</p>
 
 	<p><a href="ThrowException">Throw exception</a>.</p>
 
