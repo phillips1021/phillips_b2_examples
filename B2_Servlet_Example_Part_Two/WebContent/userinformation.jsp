@@ -24,11 +24,9 @@ value -->
 
 	<p>User Information</p>
 
-	<p>
-		Name: ${user.userName} <br /> <span style="left-margin: 10px">Student
-			Id: ${user.studentId} </span> <br /> <span style="left-margin: 10px">Batch
-			UID: ${user.batchUid}</span> 
-			
+	<p style="margin-left:10px">Name: ${user.userName} <br /> 
+			Student Id: ${user.studentId} <br /> 
+			Batch UID: ${user.batchUid}			
 	</p>
 
 <!-- note the href value uses the Context object 
