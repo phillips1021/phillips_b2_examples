@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>B2_Servlet_Example_Part_Four</display-name>
+	<servlet>
+		<display-name>UpdateEmail</display-name>
+		<servlet-name>UpdateEmail</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.UpdateEmail</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateEmail</servlet-name>
+		<url-pattern>/UpdateEmail</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<display-name>UpdateEmailAction</display-name>
+		<servlet-name>UpdateEmailAction</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.UpdateEmailAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateEmailAction</servlet-name>
+		<url-pattern>/UpdateEmailAction</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

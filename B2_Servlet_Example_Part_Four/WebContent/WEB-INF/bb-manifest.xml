@@ -37,10 +37,14 @@
 
 		
 	<permissions>
-	  <permission type="attribute" name="user.personalinfo" actions="get" />
-		<permission type="attribute" name="user.authinfo" actions="get" />
+	  <permission type="attribute" name="user.personalinfo" actions="get,set" />
+	  <permission type="attribute" name="user.authinfo" actions="get" />
 	  <permission type="attribute" name="Group" actions="get"/>
 	  <permission type="attribute" name="GroupMembership" actions="get"/>
-	<permission></permission></permissions>
+	  <permission type="persist" name="user" actions="create,modify" />
+	  <permission type="attribute" name="user.cardnumber" actions="get" />
+	  <permission type="persist" name="userlifecycleeventpropertyimpl" actions="create"/>
+	  <permission type="persist" name="userlifecycleeventimpl" actions="create"/>
+	</permissions>
   </plugin>
 </manifest>
