@@ -30,7 +30,7 @@ value -->
 
 </bbNG:actionControlBar>
 
-</bbNG:learningSystemPage>
+
 
 
 <p>Press the above Confirm Email Change button to make the change to your email address.</p>
@@ -38,3 +38,5 @@ value -->
 <p style="margin-left:10px">Name: ${user.userName} <br /> 
 			<b>New Email Address: </b>	 ${user.emailAddress }	
 </p>
+
+</bbNG:learningSystemPage>

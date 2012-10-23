@@ -3,23 +3,42 @@
 	import="java.util.*,
 				blackboard.data.*,
 				blackboard.data.user.*,
+				blackboard.platform.plugin.*,
+				edu.ku.it.si.b2example.util.*,
 				blackboard.data.course.*"%>
 
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
+
+
 
 <bbNG:learningSystemPage
 	title="Welcome To Blackboard Building Block Development Part Four - Home Page" 
 	ctxId="ctx">
 
+    <%
+    	final String jsUrl = PlugInUtil.getUri(ManifestSettings.getVendorId(), ManifestSettings.getHandle(), "script/moreHelp.js");
+	%>
+    
+    <bbNG:jsFile href="<%=jsUrl%>"/>
+    
+    
+
 	<bbNG:pageHeader>
 
-		<bbNG:pageTitleBar>
+		<bbNG:pageTitleBar >
 			Home Page
 		</bbNG:pageTitleBar>
 		
 	</bbNG:pageHeader>
 
+	<bbNG:button id="helpButton"  url="javascript:ShowMoreHelp();"  label="Need Help?" />
+
+	<br />
+	<br />
+
 	<p>Welcome to Blackboard Building Block Development Part Four</p>
+	
+	
 	
 <bbNG:form action="UpdateEmail" method="post" name="updateEmailForm" >
 	
@@ -33,7 +52,7 @@
 
 	</bbNG:step>
 
-	<bbNG:stepSubmit showCancelButton="true" cancelUrl="https://bbqa.cc.ku.edu" />
+	<bbNG:stepSubmit showCancelButton="true"  />
 	
 </bbNG:dataCollection>
 
