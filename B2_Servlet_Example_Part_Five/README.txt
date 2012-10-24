@@ -1,13 +1,13 @@
-Blackboard Building Block Example - Part Four
+Blackboard Building Block Example - Part Five
 
 This Building Block project demonstrates a very simple application that can be
 deployed to a Blackboard Learn 9.1 application server.  The project demonstrates
-how to use the Blackboard date range picker tag and how get how many unique users
-have logged in during a specified time period.
+how to use the Blackboard date range picker tag and how to get 
+the total number of unique users who have logged in during a specified time period.
 
 The project expects a user library named Blackboard to be on the 
 project's classpath.  That library should include the jar files
-needed by a Blackboard Building Block: (bb-platform.jar, 
+needed by this Blackboard Building Block: (bb-platform.jar, 
 bb-cms-admin.jar, bb-taglib.jar, log4j.jar, jstl.jar, standard.jar - 
 NOTE these jar files should not be included in the .war file). 
 
