@@ -1,6 +1,9 @@
 package edu.ku.it.si.b2example.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,6 +42,20 @@ public class UserLogins extends HttpServlet {
 		String startDateStr = request.getParameter("dateRange_start_datetime");
 		
 		LOGGER.info("User provided start date is " + startDateStr);
+		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		try {
+			
+			Date date = sdf1.parse(startDateStr);
+			
+			LOGGER.info("After converting the String to a Date the value is " + date.toString() );
+			
+		} catch (ParseException e) {
+
+			LOGGER.error("Unable to create Date object using: " + startDateStr);
+			
+			throw new IllegalStateException("Unable to create Date object.");
+		}
 		
 		request.setAttribute("startDate", startDateStr);
 		
