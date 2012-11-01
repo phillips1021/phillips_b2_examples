@@ -6,9 +6,11 @@ and for all students to see the content of the parent course.
 The B2's name that will appear in the Course Tools section 
 is Course Merge Prototype.
 
-NOTE:  The code that acutally does the merge is NOT implemented.
+NOTE:  The code that actually does the merge is NOT implemented.
 So running this B2 will NOT merge any courses.  See the TODO
 in class SelectChildCoursesAction.java.
+
+IMPORTANT: This B2 has not been fully tested or used in production.
 
 This B2 was tested on Blackboard Learn 9.1 Service Pack 9.
 
