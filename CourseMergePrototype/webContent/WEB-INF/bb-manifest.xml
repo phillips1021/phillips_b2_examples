@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<manifest>
+	<!-- core extension information -->
+	<plugin>
+		<name value="Course Merge Prototype" />
+		<handle value="Course_Merge_Prototype" />
+		<description
+			value="Example of a building block course tool that allows an instructor to add child course(s) to a parent course" />
+		<version value="1.0.0" />
+		<requires>
+			<bbversion value="9.0" />
+		</requires>
+		<vendor>
+			<id value="kuit" />
+			<name value="KU IT " />
+			<url value="http://technology.ku.edu" />
+			<description value="University of Kansas Information Technology" />
+		</vendor>
+
+		<!-- These two JSPs are displayed when the "remove" and "properties" buttons -->
+		<!-- are pressed on the Building Blocks administration page. -->
+		<!-- <http-actions> <config value="admin/configure.jsp"/> <remove value="admin/remove.jsp"/> 
+			</http-actions> -->
+		<application-defs>
+			<application handle="Course_Merge_Prototype" type="shared"
+				use-ssl="false" name="Course Merge Prototype" can-allow-guest="false">
+				<description lang="en_US">Example of a building block course
+					tool that allows an instructor to add child course(s) to a parent
+					course</description>
+				<links>
+					<link>
+						<type value="course_tool" />
+						<name value="Course Merge Prototype" />
+						<url value="index.jsp" />
+						<description
+							value="Example of a building block course tool that allows an instructor to add child course(s) to a parent course" />
+					</link>
+				</links>
+			</application>
+		</application-defs>
+
+		<!-- Portal Module Definitions -->
+		<module-defs>
+		</module-defs>
+		<!-- Custom Content Types -->
+		<content-handlers>
+		</content-handlers>
+
+		<!-- code permissions required for proper operation -->
+		<permissions>
+			<permission type="attribute" name="user.authinfo" actions="get" />
+			<permission type="attribute" name="user.personalinfo"
+				actions="get,set" />
+			<permission type="attribute" name="Group" actions="get" />
+			<permission type="attribute" name="GroupMembership"
+				actions="get" />
+			<permission type="persist" name="coursemembership"
+				actions="create,modify"></permission>
+			<permission type="persist" name="course" actions="create,modify"></permission>
+		</permissions>
+
+	</plugin>
+
+</manifest>

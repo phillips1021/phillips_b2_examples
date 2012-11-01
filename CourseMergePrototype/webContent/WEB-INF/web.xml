@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Course Merge Building Block</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<description>Get all courses user is an instructor of</description>
+		<display-name>SelectChildCourses</display-name>
+		<servlet-name>SelectChildCourses</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.SelectChildCourses</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectChildCourses</servlet-name>
+		<url-pattern>/SelectChildCourses</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>Confirm parent and child courses to merge</description>
+		<display-name>SelectChildCoursesConfirm</display-name>
+		<servlet-name>SelectChildCoursesConfirm</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.SelectChildCoursesConfirm</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectChildCoursesConfirm</servlet-name>
+		<url-pattern>/SelectChildCoursesConfirm</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description>Merge blackboard courses</description>
+		<display-name>SelectChildCoursesAction</display-name>
+		<servlet-name>SelectChildCoursesAction</servlet-name>
+		<servlet-class>edu.ku.it.si.b2example.servlet.SelectChildCoursesAction</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SelectChildCoursesAction</servlet-name>
+		<url-pattern>/SelectChildCoursesAction</url-pattern>
+	</servlet-mapping>
+</web-app>
