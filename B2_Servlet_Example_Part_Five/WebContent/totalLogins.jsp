@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
 	pageEncoding="US-ASCII"
 	%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ taglib uri="/bbNG" prefix="bbNG"%>
 
@@ -25,7 +27,8 @@ value -->
 	</bbNG:pageHeader>
 
 
-	<p>Total logins were between ${startDate } and ...</p>
+	<p>Total unique logins between <fmt:formatDate type="date" dateStyle="short" value="${startDate}" /> and 
+	<fmt:formatDate type="date" dateStyle="short" value="${endDate}" /> (noninclusive) were <b>${totalLogins}</b>.</p>
 	
 
 
