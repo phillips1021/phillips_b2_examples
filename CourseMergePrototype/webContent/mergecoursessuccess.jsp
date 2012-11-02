@@ -45,7 +45,7 @@
 		</table>
 	
 <p style="margin-bottom:15px">All course content should only be added to the parent course above.  Students are enrolled in and will only see the 
-parent course content when using Blackboard.  Student who were only enrolled in the child course 
+parent course content when using Blackboard.  Students who were only enrolled in the child course 
 will see the title of the child course and the content from the parent course.</p>	
 
 <p style="margin-bottom:15px">Note "un-merging" these courses will require assistance a Blackboard system administrator.  

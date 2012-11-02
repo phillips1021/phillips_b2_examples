@@ -32,7 +32,7 @@
 	
 <h3>Merge Blackboard Courses</h3>	
 	
-<p>The current course you are viewing, ${ctx.course.title}, will be the parent course for this merge.</p>
+<p style="margin-bottom:15px">The current course you are viewing, ${ctx.course.courseId}: ${ctx.course.title}, will be the parent course for this merge.</p>
 
 <p style="margin-bottom:15px">The next step is to select one or more other Blackboard courses that you are teaching this semester 
 to be the child course(s) of this
@@ -42,7 +42,7 @@ parent course.</p>
 parent Blackboard course.  Then all the enrollments for the parent and child courses will show up in the parent course, 
 students will only see the content from the parent course, and you should add content to only the parent course.</p>
 
-<p><a href="SelectChildCourses?course_id=${ctx.courseId.externalString}">Select one or more child courses</a> to merge with ${ctx.course.title}.	
+<p><a href="SelectChildCourses?course_id=${ctx.courseId.externalString}">Select one or more child courses</a> to merge with ${ctx.course.courseId}: ${ctx.course.title}.	
 	
 	
 	

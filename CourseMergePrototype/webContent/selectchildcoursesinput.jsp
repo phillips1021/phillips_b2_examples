@@ -27,7 +27,8 @@
 	<br />
 	<br />
 	
-	<p style="margin-bottom:15px">Use the form below to select one or more child courses to merge with ${ctx.course.title}.  The Blackboard courses 
+	<p style="margin-bottom:15px">Use the form below to select one or more child courses to merge with ${ctx.course.title}. 
+	 The Blackboard courses 
 	listed below are those courses where you are the instructor during the same term as the parent course. 
 	Any courses that are already merged with a parent course are not shown (a course may only have one parent course).</p>
 	<p style="margin-bottom:15px">After marking the check box for each course you want to be merged with ${ctx.course.title} click on the
