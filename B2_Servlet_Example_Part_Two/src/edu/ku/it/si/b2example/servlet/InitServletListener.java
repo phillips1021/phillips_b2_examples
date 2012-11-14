@@ -55,9 +55,7 @@ public class InitServletListener implements ServletContextListener {
 						}
 					}
 				}
-				
-				// configure log4j with a 2 second refresh
-				PropertyConfigurator.configureAndWatch(log4jConfig.getCanonicalPath(), 2000);
+
 				
 			} catch(Exception e) {
 				// log failed to initialize
@@ -84,7 +82,7 @@ public class InitServletListener implements ServletContextListener {
 		
 		LOG.info("contextDestroyed  module.");
 		
-		// Un-register ourselves as the Content Handler for Assessments (only if the B2 is deactivated)
+		
 		
 	}
 	
