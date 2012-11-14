@@ -9,7 +9,7 @@ Blackboard application server.
 The project expects a user library named Blackboard to be on the 
 project's classpath.  That library should include the jar files
 needed by a Blackboard Building Block: (bb-platform.jar, 
-bb-cms-admin.jar, bb-taglib.jar, commons-logging.jar). The project also needs the log4j.jar
+bb-cms-admin.jar, bb-taglib.jar). The project also needs the log4j.jar
 file on the class path.
 
 Export the project as a .war file and then install the .war file
