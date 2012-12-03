@@ -85,7 +85,9 @@ public class SelectChildCoursesAction extends HttpServlet {
 			List<Course> childCourseList = getChildCourses(request, course);
 
 			// TODO: Loop over the collection of child Course objects 
-			// and add each child course to the parent course
+			// Set the availability of each child course to false
+			// and then use a CourseDbPersister to persist the changed course to the Database.
+			// Then add each child course to the parent course
 			// using CourseCourseManager method addChildToMaster
 			//See:  http://library.blackboard.com/ref/598135ae-501e-46f6-9910-190d7ea0a17c/blackboard/data/course/CourseCourseManager.html
 			//and http://library.blackboard.com/ref/598135ae-501e-46f6-9910-190d7ea0a17c/blackboard/data/course/CourseCourseManagerFactory.html
