@@ -2,7 +2,9 @@ Blackboard Building Block Example Using Servlet - Part Two
 
 This Building Block project demonstrates a very simple application that can be
 deployed to a Blackboard Learn 9.1 application server.  The project demonstrates
-how to use a Java Servlet as a controller.
+how to use a Java Servlet as a controller and also how to configure the Building 
+Block to write to a log file in blackboard/logs/custom folder on the 
+Blackboard application server.
 
 The project expects a user library named Blackboard to be on the 
 project's classpath.  That library should include the jar files

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import blackboard.data.user.User;
 import blackboard.platform.context.Context;
 import blackboard.platform.context.ContextManager;
@@ -18,7 +20,9 @@ import blackboard.platform.context.ContextManagerFactory;
  * the logged in user.
  */
 public class UserInformation extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = Logger.getLogger( UserInformation.class.getName() );
        
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +49,8 @@ public class UserInformation extends HttpServlet {
 		 * See: http://library.blackboard.com/ref/598135ae-501e-46f6-9910-190d7ea0a17c/blackboard/data/user/User.html
 		 */
 		User user = ctx.getUser() ;
+		
+		LOGGER.info("User is " + user.getGivenName() + " " + user.getFamilyName() );
 		
 		request.setAttribute("user", user);
 		
