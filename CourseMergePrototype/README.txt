@@ -24,7 +24,8 @@ The B2 can be "auto-deployed" to a Blackboard development system
 by running the Ant target deploy-b2.  For this to work correctly
 the Blackboard Starting Building Block must be installed 
 on the Blackboard develop system.
-(see:   Starting Building Block on the Blackboard development server (see: https://behind.blackboard.com/s/developer/dlc/download.aspx?d=1335))
+(see:   Starting Building Block on the Blackboard development server 
+(see: https://behind.blackboard.com/s/developer/dlc/download.aspx?d=1335))
 
 In the build.xml file you will need to set the URL of your 
 Blackboard development system for the deploy-b2 target to 

@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import blackboard.data.ValidationException;
 import blackboard.data.course.Course;
+import blackboard.data.course.CourseCourseManager;
+import blackboard.data.course.CourseCourseManagerFactory;
+import blackboard.data.course.FailedCrossListEnrollments;
 import blackboard.persist.BbPersistenceManager;
 import blackboard.persist.KeyNotFoundException;
 import blackboard.persist.PersistenceException;
@@ -85,12 +89,53 @@ public class SelectChildCoursesAction extends HttpServlet {
 			List<Course> childCourseList = getChildCourses(request, course);
 
 			// TODO: Loop over the collection of child Course objects 
-			// Set the availability of each child course to false
-			// and then use a CourseDbPersister to persist the changed course to the Database.
-			// Then add each child course to the parent course
-			// using CourseCourseManager method addChildToMaster
+			// and add each child course to the parent course
+			// using CourseCourseManager method addChildToMaster.
+			// Note the method addChildToMaster returns an object of 
+			// type FailedCrossListEnrollments.  That class is not 
+			// documented in the Blackboard API JavaDoc.  Using method 
+			// getAllFailedEnrollmentMessages() of that class you can
+			// get a collection of Strings, where each String is a 
+			// message about a failed enrollment update to the parent 
+			// course.
 			//See:  http://library.blackboard.com/ref/598135ae-501e-46f6-9910-190d7ea0a17c/blackboard/data/course/CourseCourseManager.html
 			//and http://library.blackboard.com/ref/598135ae-501e-46f6-9910-190d7ea0a17c/blackboard/data/course/CourseCourseManagerFactory.html
+			
+//			CourseCourseManager courseCourseManager = CourseCourseManagerFactory.getInstance() ;
+//
+//			for (Course childCourse : childCourseList) {
+//				
+//				try {
+//					
+//					FailedCrossListEnrollments failedCrossListEnrollments = courseCourseManager.addChildToMaster(childCourse.getId(), course.getId());
+//						
+//					if (failedCrossListEnrollments.getAllFailedEnrollmentMessages().size() > 0) {
+//					
+//					    LOGGER.warn("Child course " + childCourse.getCourseId() + " was merged with parent course " + 
+//					      course.getCourseId() + " successfully but there were enrollment errors.");
+//					    
+//						logAnyFailedEnrollments(failedCrossListEnrollments);
+//					    
+//					} else {
+//						
+//						LOGGER.info("Child course " + childCourse.getCourseId() + " was merged with parent course " + 
+//							      course.getCourseId() + " successfully and there were NO enrollment errors.");
+//
+//					}
+//					
+//				
+//				} catch (ValidationException e) {
+//						
+//						LOGGER.error(e.getMessage());
+//
+//						RequestDispatcher dispatcher = getServletContext()
+//								.getRequestDispatcher("/error.jsp");
+//
+//						dispatcher.forward(request, response);
+//						
+//					}	
+//				
+//			}
 
 			request.setAttribute("childCourses", childCourseList);
 
@@ -149,6 +194,25 @@ public class SelectChildCoursesAction extends HttpServlet {
 		}
 		
 		return childCourseList;
+		
+	}
+	
+	
+	/**
+	 * Log any failed enrollments that occurred when the child course
+	 * was added to the master course.
+	 * @param failedCrossListEnrollments
+	 */
+	private void logAnyFailedEnrollments(
+			FailedCrossListEnrollments failedCrossListEnrollments) {
+		
+		
+		
+		for (String failedEnrollmentMessage : failedCrossListEnrollments.getAllFailedEnrollmentMessages() ) {
+
+			LOGGER.warn("Enrollment failed:  " + failedEnrollmentMessage ) ;
+			
+		}
 		
 	}
 
