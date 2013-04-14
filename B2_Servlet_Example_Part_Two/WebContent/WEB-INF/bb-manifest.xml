@@ -38,11 +38,11 @@
 		
 	<permissions>
 	  <permission type="attribute" name="user.personalinfo" actions="get" />
-		<permission type="attribute" name="user.authinfo" actions="get" />
+	  <permission type="attribute" name="user.authinfo" actions="get" />
 	  <permission type="attribute" name="Group" actions="get"/>
 	  <permission type="attribute" name="GroupMembership" actions="get"/>
-	   <permission type="java.io.FilePermission"
-        name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" actions="read,write" />
+	  <permission type="java.io.FilePermission" name="BB_HOME/logs/custom" actions="read,write,delete"/>
 	</permissions>
+	
   </plugin>
 </manifest>
