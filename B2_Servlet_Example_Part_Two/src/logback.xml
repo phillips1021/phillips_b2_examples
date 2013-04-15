@@ -17,7 +17,7 @@ scan period is 1 minute.
     <append>true</append>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <!-- daily rollover -->
-      <fileNamePattern>../../../logs/custom/b2servletexample.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>../../../logs/custom/b2servletexample2.%d{yyyy-MM-dd}.log</fileNamePattern>
       <!-- keep 21 days' worth of history -->
       <maxHistory>21</maxHistory>
     </rollingPolicy>
