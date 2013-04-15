@@ -41,8 +41,9 @@
 		<permission type="attribute" name="user.authinfo" actions="get" />
 	  <permission type="attribute" name="Group" actions="get"/>
 	  <permission type="attribute" name="GroupMembership" actions="get"/>
-	   <permission type="java.io.FilePermission"
-        name="&amp;lt;&amp;lt;ALL FILES&amp;gt;&amp;gt;" actions="read,write" />
+	  <!-- The logs directory -->
+  <permission type="java.io.FilePermission" name="BB_HOME/logs/-"
+actions="read,write,delete"/>
 	</permissions>
   </plugin>
 </manifest>
