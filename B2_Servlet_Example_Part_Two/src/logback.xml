@@ -30,8 +30,6 @@ scan period is 1 minute.
         <level value="debug" />
   </logger>
 
-  
-
   <root>
     <level value="error"/>
         <appender-ref ref="PUBLISHERS" />
