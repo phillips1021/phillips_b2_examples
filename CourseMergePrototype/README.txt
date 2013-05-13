@@ -10,8 +10,6 @@ NOTE:  The code that actually does the merge is NOT implemented.
 So running this B2 will NOT merge any courses.  See the TODO
 in class SelectChildCoursesAction.java.
 
-IMPORTANT: This B2 has not been fully tested or used in production.
-
 This B2 was tested on Blackboard Learn 9.1 Service Pack 9.
 
 The project was created using the Blackboard Building Block
@@ -50,5 +48,6 @@ some other parent
 See class SelectChildCourses.java for the code that implements 
 these rules.
 
-The initial view page is index.jsp.  The application logs to the 
-stdout-stderr file in blackboard/logs/tomcat.
+The initial view page is index.jsp.  This application uses slf4j 
+and logback frameworks to support logging to a file named
+ coursemergeprototype.log in the [Blackboard Home]/logs/custom folder.
