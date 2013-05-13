@@ -26,7 +26,8 @@
 				use-ssl="false" name="Course Merge Prototype" can-allow-guest="false">
 				<description lang="en_US">Example of a building block course
 					tool that allows an instructor to add child course(s) to a parent
-					course</description>
+					course
+				</description>
 				<links>
 					<link>
 						<type value="course_tool" />
@@ -57,6 +58,9 @@
 			<permission type="persist" name="coursemembership"
 				actions="create,modify"></permission>
 			<permission type="persist" name="course" actions="create,modify"></permission>
+			<!-- The logs directory -->
+			<permission type="java.io.FilePermission" name="BB_HOME/logs/-"
+				actions="read,write,delete" />
 		</permissions>
 
 	</plugin>
