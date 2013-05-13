@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import blackboard.data.course.Course;
 import blackboard.persist.BbPersistenceManager;
@@ -30,8 +31,7 @@ public class SelectChildCoursesConfirm extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger LOGGER = Logger
-			.getLogger(SelectChildCoursesConfirm.class.getName());
+	private static final Logger LOGGER =LoggerFactory.getLogger(SelectChildCoursesConfirm.class.getName());
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
