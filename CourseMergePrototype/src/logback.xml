@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Enable configuration scanning to automatically pick up changes
+made to this file and reconfigure logging on the fly. Default 
+scan period is 1 minute.
+-->
+<configuration scan="true">
+
+  <!-- appender for connect -->
+  <appender name="PUBLISHERS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+   <!--
+    The file path is relative to the service-wrapper bin directory
+    located at ${bb.root}/apps/service-wrapper/bin. The path below
+    maps to ${bb.root}/logs/custom/.
+    -->
+    <file>../../../logs/custom/coursemergeprototype.log</file>
+    <append>true</append>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>../../../logs/custom/coursemergeprototype.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <!-- keep 21 days' worth of history -->
+      <maxHistory>21</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%-5p[%d{yyyy-MM-dd HH:mm:ss}][%-24t] : %m%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="edu.ku.it.si">
+        <level value="debug" />
+  </logger>
+
+  <root>
+    <level value="error"/>
+        <appender-ref ref="PUBLISHERS" />
+  </root>
+
+</configuration>
