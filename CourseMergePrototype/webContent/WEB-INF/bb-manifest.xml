@@ -56,7 +56,7 @@
 			<permission type="attribute" name="GroupMembership"
 				actions="get" />
 			<permission type="persist" name="coursemembership"
-				actions="create,modify"></permission>
+				actions="create,modify,delete"></permission>
 			<permission type="persist" name="course" actions="create,modify"></permission>
 			<!-- The logs directory -->
 			<permission type="java.io.FilePermission" name="BB_HOME/logs/-"
